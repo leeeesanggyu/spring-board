@@ -12,7 +12,8 @@
 <body>
 
 	<nav class="navbar navbar-expand-lg  navbar-light bg-light">
-	    	<a class="navbar-brand" href="getBoardList.do">SPRING 게시판 만들기</a>
+	    	<a class="navbar-brand" href="getBoardList.do">SPRING 게시판 만들기${userName }</a>
+	    	<small>${userName }님 반갑습니다.</small>
 	    	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar">
 	        	<span class="navbar-toggler-icon"></span>
 	      	</button>

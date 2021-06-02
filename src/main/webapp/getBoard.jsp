@@ -24,29 +24,28 @@
 				<option value=title>제목</option>
 				<option value=username>작성자</option>
 			</select> 
-			
 			<input type="text" name="search" class="form-control mx-1 mt-2" placeholder="내용을 입력하세요">
-			
 			<button type="submit" class="btn btn-primary mx-1 mt-2">검색</button>
 			<a class="btn btn-primary mx-1 mt-2" data-toggle="modal" href="getBoardList.do">등록하기</a>
 		</form>
-
+	
 		<div class="card bg-light mt-3">
-		<div class="card-header bg-light">
-			<div class="row">
-				<div class="col-8 text-left"><strong>${board.title}</strong>&nbsp;&nbsp;&nbsp;<small>작성자:${board.writer}&nbsp;&nbsp;&nbsp;게시물번호:${board.seq}&nbsp;&nbsp;&nbsp; ${board.regDate}</small></div>
-				<div class="col-4 text-right">
-					<a href="deleteBoard.do?seq=${board.seq}">삭제</a>
+			<div class="card-header bg-light">
+				<div class="row">
+					<div class="col-8 text-left"><strong>${board.title}</strong>&nbsp;&nbsp;&nbsp;<small>작성자:${board.writer}&nbsp;&nbsp;&nbsp;게시물번호:${board.seq}&nbsp;&nbsp;&nbsp; ${board.regDate}</small></div>
+					<div class="col-4 text-right">
+						<a href="deleteBoard.do?seq=${board.seq}">삭제</a>
+					</div>
 				</div>
 			</div>
+			<div class="card-body">
+				<p class="card-text">${board.content}</p>
+				<a href="getBoardList.do">글 등록</a>&nbsp;&nbsp;&nbsp;
+				<a href="updateBoard.do">글 수정</a>&nbsp;&nbsp;&nbsp;
+				<a href="deleteBoard.do?seq=${board.seq}">글 삭제</a>&nbsp;&nbsp;&nbsp;
+				<a href="getBoardList.do">글 목록</a>
+			</div>
 		</div>
-		<div class="card-body">
-			<p class="card-text">${board.content}</p>
-			<a href="getBoardList.do">글 등록</a>&nbsp;&nbsp;&nbsp;
-			<a href="deleteBoard.do?seq=${board.seq}">글 삭제</a>&nbsp;&nbsp;&nbsp;
-			<a href="getBoardList.do">글 목록</a>
-		</div>
-	</div>
 	</section>
 	
 	<%@ include file="/../footer.jsp"%>

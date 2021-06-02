@@ -10,7 +10,23 @@ public class BoardVO {
 	private String content;
 	private Date regDate;
 	private int cnt;
+	private String searchCondition;
 	
+	public String getSearchCondition() {
+		return searchCondition;
+	}
+	public void setSearchCondition(String searchCondition) {
+		this.searchCondition = searchCondition;
+	}
+
+	private String seachKeyword;
+	
+	public String getSeachKeyword() {
+		return seachKeyword;
+	}
+	public void setSeachKeyword(String seachKeyword) {
+		this.seachKeyword = seachKeyword;
+	}
 	public int getSeq() {
 		return seq;
 	}

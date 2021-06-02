@@ -21,7 +21,6 @@
 <%@ include file="/../header.jsp"%>
 
 	<section class="container">
-
 		<form method="get" action="" class="form-inline mt-3">
 			<select id="SearchType" name="SearchType" class="form-control mx-1 mt-2">
 				<option value=title>제목</option>
