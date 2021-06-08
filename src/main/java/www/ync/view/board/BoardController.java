@@ -1,19 +1,30 @@
 package www.ync.view.board;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.servlet.ServletContext;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.multipart.MultipartFile;
 
 import www.ync.kr.board.BoardVO;
 import www.ync.kr.board.impl.BoardDAO;
 
 @Controller
+@SessionAttributes("board")
 public class BoardController {
 
+	@Autowired
+	private ServletContext servletContext;
+	
 	// 검색 조건 목록 설정
 	@ModelAttribute("conditionMap")
 	public Map<String, String> searchConditionMap(){
@@ -25,7 +36,14 @@ public class BoardController {
 	}
 	
 	@RequestMapping(value="/insertBoard.do")
-	public String insertBoard(BoardVO vo, BoardDAO boardDAO) {
+	public String insertBoard(BoardVO vo, BoardDAO boardDAO) throws IOException {
+		MultipartFile uploadFile = vo.getUploadFile();
+		if(!uploadFile.isEmpty()) {
+			String realPath = servletContext.getRealPath("/");
+			
+			String fileName = uploadFile.getOriginalFilename();
+			uploadFile.transferTo(new File(realPath + "/resources/upload" + fileName));
+		}
 		boardDAO.insertBoard(vo);
 		
 		return "getBoardList.do";
@@ -60,8 +78,11 @@ public class BoardController {
 	
 	@RequestMapping("/getBoardList.do")
 	public String getBoardList(BoardVO vo, BoardDAO boardDAO, Model model) {
-		model.addAttribute("boardList", boardDAO.getBoardList(vo));	// Model 정보 저장
+		//null check
+		if(vo.getSearchCondition() == null) vo.setSearchCondition("TITLE");
+		if(vo.getSearchKeyword() == null) vo.setSearchKeyword("");
 		
+		model.addAttribute("boardList", boardDAO.getBoardList(vo));	// Model 정보 저장
 		return "getBoardList.jsp";
 	}
 }

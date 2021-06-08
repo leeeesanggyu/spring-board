@@ -12,8 +12,8 @@
 <body>
 	<%@ include file="./header.jsp"%>
 
-	<div class="container mt-3" style="max-width: 560px;">
-		<form method="post" action="login_proc.jsp">
+	<div class="container mt-3" style="max-width: 565px;">
+		<form method="post" action="login.do">
 			<div class="form-group">
 				<label>ID</label> <input type="text" name="id" class="form-control">
 			</div>

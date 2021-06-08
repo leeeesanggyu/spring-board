@@ -12,8 +12,8 @@
 <body>
 
 	<nav class="navbar navbar-expand-lg  navbar-light bg-light">
-	    	<a class="navbar-brand" href="getBoardList.do">SPRING 게시판 만들기${userName }</a>
-	    	<small>${userName }님 반갑습니다.</small>
+	    	<a class="navbar-brand" href="getBoardList.do">SPRING 게시판 만들기</a>
+	    	<small>${userName}</small>
 	    	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar">
 	        	<span class="navbar-toggler-icon"></span>
 	      	</button>
@@ -24,7 +24,7 @@
           	</li>
         </ul>
 
-        <form action="./header_search_Action.php" method="get" class="form-inline my-2 my-lg-0">
+        <form action="getBoardList.do" method="post" class="form-inline my-2 my-lg-0">
         	<input type="text" name="search" class="form-control mr-sm-2" placeholder="내용을 입력하세요.">
         	<button class="btn btn-outline-success my-2 my-sm-0" type="submit">검색</button>
         </form>

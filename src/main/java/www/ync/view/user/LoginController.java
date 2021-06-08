@@ -26,13 +26,17 @@ public class LoginController {
 	public String login(UserVO vo, UserDAO userDAO, HttpSession session) {
 		System.out.println("로그인 인증 처리...");
 		
+		if(vo.getId() == null || vo.getId().equals("")) {
+			throw new IllegalArgumentException("아이디를 반드시 입력하셔야 합니다.");
+		}
 		UserVO user = userDAO.getUser(vo);
 		if(user != null) {
 			session.setAttribute("userName", user.getName());
 			return "getBoardList.do";
 		}
-		else
+		else {
 			return "login.jsp";
+		}
 	}
 
 }

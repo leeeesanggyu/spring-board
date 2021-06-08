@@ -9,13 +9,19 @@
 	<title></title>
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
 <style>
-
+footer{ position:fixed; 
+  left:0px; 
+  bottom:0px; 
+  height:60px; 
+  width:100%; 
+  background:grey; 
+  color: white; }
 </style>
 </head>
 <body>
 
-<footer class="bg-dark mt-4 p-5 text-center" style="color: #FFFFFF;">
-  Copyright &copy; 2020 이상규 ALL Rights Reserved.
+<footer class="bg-dark mt-4 p-5 text-center" style="color: #FFFFF1;">
+  &copy; 1705090 이상규
 </footer>
 
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>

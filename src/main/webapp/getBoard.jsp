@@ -35,17 +35,55 @@
 					<div class="col-8 text-left"><strong>${board.title}</strong>&nbsp;&nbsp;&nbsp;<small>작성자:${board.writer}&nbsp;&nbsp;&nbsp;게시물번호:${board.seq}&nbsp;&nbsp;&nbsp; ${board.regDate}</small></div>
 					<div class="col-4 text-right">
 						<a href="deleteBoard.do?seq=${board.seq}">삭제</a>
+						
 					</div>
 				</div>
 			</div>
 			<div class="card-body">
+
 				<p class="card-text">${board.content}</p>
-				<a href="getBoardList.do">글 등록</a>&nbsp;&nbsp;&nbsp;
-				<a href="updateBoard.do">글 수정</a>&nbsp;&nbsp;&nbsp;
-				<a href="deleteBoard.do?seq=${board.seq}">글 삭제</a>&nbsp;&nbsp;&nbsp;
-				<a href="getBoardList.do">글 목록</a>
+				<a class="btn btn-primary mt-2" href="deleteBoard.do?seq=${board.seq}">글 삭제</a>
+				<a class="btn btn-primary mt-2" data-toggle="modal" href="#updateModal">글 수정</a>
+				<a class="btn btn-primary mt-2" href="getBoardList.do">글 목록</a>				
 			</div>
 		</div>
+		
+		<div class="modal fade" id="updateModal" tabindex="-1" role="dialog" aria-labelledby="modal" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="modal">게시물 수정s</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+
+					<form action="updateBoard.do" method="post">
+						<div class="form-group">
+							<input type="hidden" name="seq" value="${board.seq }" class="form-control">
+						
+							<label>제목</label>
+							<input type="text" name="title" value="${board.title }"class="form-control" maxlength="30">
+						</div>
+						<div class="form-group">
+							<label>내용</label>
+							<input type="text" name="content" value="${board.content }" class="form-control" maxlength="2048" style="height: 180px;">
+						</div>
+					  	<div class="form-group">
+							<label>작성자 : ${userName}</label>
+							<input type="hidden" name="writer" class="form-control" value="${userName}" maxlength="30">
+						</div>
+						<div class="modal-footer">
+							<button type="submit" class="btn btn-primary">등록하기</button>
+							<button type="button" class="btn btn-secondary" data-dismiss="modal">취소</button>
+						</div>
+					</form>
+
+				</div>
+			</div>
+		</div>
+	</div>
 	</section>
 	
 	<%@ include file="/../footer.jsp"%>

@@ -19,16 +19,14 @@
 </head>
 <body>
 <%@ include file="/../header.jsp"%>
-
 	<section class="container">
-		<form method="get" action="" class="form-inline mt-3">
+	
+		<form method="post" action="getBoardList.do" class="form-inline mt-3">
 			<select id="SearchType" name="SearchType" class="form-control mx-1 mt-2">
 				<option value=title>제목</option>
-				<option value=username>작성자</option>
+				<option value=content>내용</option>
 			</select> 
-			
 			<input type="text" name="search" class="form-control mx-1 mt-2" placeholder="내용을 입력하세요">
-			
 			<button type="submit" class="btn btn-primary mx-1 mt-2">검색</button>
 			<a class="btn btn-primary mx-1 mt-2" data-toggle="modal" href="#registerModal">등록하기</a>
 		</form>
@@ -64,8 +62,9 @@
 				</div>
 				<div class="modal-body">
 
-					<form action="insertBoard.do" method="post">
+					<form action="insertBoard.do" method="post" enctype="multipart/form-data">
 						<div class="form-group">
+							
 							<label>제목</label>
 							<input type="text" name="title" class="form-control" maxlength="30">
 						</div>
@@ -73,9 +72,13 @@
 							<label>내용</label>
 							<textarea name="content" class="form-control" maxlength="2048" style="height: 180px;"></textarea>
 						</div>
+						<div class="form-group">
+							<label>업로드</label>
+							<input type="file" name="uploadFile" class="form-control">
+						</div>
 					  	<div class="form-group">
-							<label>별명</label>
-							<textarea name="writer" class="form-control" maxlength="2048" style="height: 180px;"></textarea>
+							<label>작성자 : ${userName}</label>
+							<input type="hidden" name="writer" class="form-control" value="${userName}" maxlength="30">
 						</div>
 						<div class="modal-footer">
 							<button type="submit" class="btn btn-primary">등록하기</button>

@@ -2,6 +2,8 @@ package www.ync.kr.board;
 
 import java.util.Date;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public class BoardVO {
 	
 	private int seq;
@@ -11,7 +13,21 @@ public class BoardVO {
 	private Date regDate;
 	private int cnt;
 	private String searchCondition;
-	
+	private String searchKeyword;
+	private MultipartFile uploadFile;
+
+	public MultipartFile getUploadFile() {
+		return uploadFile;
+	}
+	public void setUploadFile(MultipartFile uploadFile) {
+		this.uploadFile = uploadFile;
+	}
+	public String getSearchKeyword() {
+		return searchKeyword;
+	}
+	public void setSearchKeyword(String searchKeyword) {
+		this.searchKeyword = searchKeyword;
+	}
 	public String getSearchCondition() {
 		return searchCondition;
 	}
@@ -19,14 +35,7 @@ public class BoardVO {
 		this.searchCondition = searchCondition;
 	}
 
-	private String seachKeyword;
 	
-	public String getSeachKeyword() {
-		return seachKeyword;
-	}
-	public void setSeachKeyword(String seachKeyword) {
-		this.seachKeyword = seachKeyword;
-	}
 	public int getSeq() {
 		return seq;
 	}
